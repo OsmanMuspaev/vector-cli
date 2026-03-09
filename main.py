@@ -22,7 +22,7 @@ while True:
 
         print(f"{'ID':<3} | {'TYPE':<10} | DATA")
         print("-" * 30)
-        
+
         for i, shape in enumerate(shapes):
             shape_type = type(shape).__name__
             print(f"{i:<3} | {shape_type:<10} | {shape}")
@@ -51,6 +51,18 @@ while True:
         except:
             print("Invalid command")
 
+    elif cmd == "clear":
+        shapes.clear()
+        print("All shapes deleted")
+    
+    elif cmd == "info":
+        try:
+            idx = int(parts[1])
+            shape = shapes[idx]
+            print(f"ID {idx}: {type(shape).__name__} -> {shape}")
+        except:
+            print("Invalid id")
+
     elif cmd == "help":
         print("""
 Commands:
@@ -62,7 +74,9 @@ Commands:
     delete id     - delete shape by id
     help          - show this help
     exit          - exit program 
+    clear         - delete all shapes
+    info id       - show info of a shape
         """)
 
     else:
-        print("Unknown command")
+        print("Unknown command, type 'help'")
