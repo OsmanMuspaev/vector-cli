@@ -10,3 +10,10 @@ class Square(Shape):
 
     def info(self):
         return f"Square ({self.x},{self.y}) size={self.size}"
+    
+    def update(self, params):
+        if len(params) != 3:
+            raise ValueError("Square needs 3 arguments: x y size")
+        x = float(params[0])
+        y = float(params[1])
+        size = float(params[2])

@@ -6,5 +6,8 @@ class Shape(ABC):
     def info(self):
         pass
 
+    def update(self, params):
+        pass
+
     def __str__(self):
         return self.info()

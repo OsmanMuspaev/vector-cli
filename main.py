@@ -51,6 +51,20 @@ while True:
         except:
             print("Invalid command")
 
+    elif cmd == "update":
+        try:
+            idx = int(parts[1])
+            if idx < 0 or idx >= len(shapes):
+                print("Invalid id")
+                continue
+
+            shape = shapes[idx]
+            shape.update(parts[2:])
+            print("Shape updated")
+
+        except Exception as e:
+            print("Error:", e)
+
     elif cmd == "clear":
         shapes.clear()
         print("All shapes deleted")
@@ -66,16 +80,37 @@ while True:
     elif cmd == "help":
         print("""
 Commands:
-    create point x y
-    create segment x1 y1 x2 y2
-    create circle x y r
-    create square x y size
-    list          - show all shapes
-    delete id     - delete shape by id
-    help          - show this help
-    exit          - exit program 
-    clear         - delete all shapes
-    info id       - show info of a shape
+              
+  create <shape> <parameters>
+    - point x y           : create a Point
+    - segment x1 y1 x2 y2 : create a Segment
+    - circle x y r        : create a Circle
+    - square x y size     : create a Square
+              
+  list
+    - show all created shapes in a table with ID, TYPE and DATA
+              
+  update <id> <parameters>
+    - modify a shape by its ID
+      Point: update <id> x y
+      Segment: update <id> x1 y1 x2 y2
+      Circle: update <id> x y r
+      Square: update <id> x y size
+              
+  delete <id>
+    - remove a shape by its ID
+
+  clear
+    - delete all shapes from the editor
+                   
+  info <id>
+    - show detailed information about a shape
+              
+  help
+    - show this help message
+
+  exit
+    - exit the program
         """)
 
     else:
