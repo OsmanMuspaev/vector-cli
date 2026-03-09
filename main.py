@@ -20,8 +20,12 @@ while True:
             print("No shapes created")
             continue
 
+        print(f"{'ID':<3} | {'TYPE':<10} | DATA")
+        print("-" * 30)
+        
         for i, shape in enumerate(shapes):
-            print(f"{i}: {shape}")
+            shape_type = type(shape).__name__
+            print(f"{i:<3} | {shape_type:<10} | {shape}")
 
     elif cmd == "create":
 
@@ -46,5 +50,19 @@ while True:
         
         except:
             print("Invalid command")
+
+    elif cmd == "help":
+        print("""
+Commands:
+    create point x y
+    create segment x1 y1 x2 y2
+    create circle x y r
+    create square x y size
+    list          - show all shapes
+    delete id     - delete shape by id
+    help          - show this help
+    exit          - exit program 
+        """)
+
     else:
         print("Unknown command")
